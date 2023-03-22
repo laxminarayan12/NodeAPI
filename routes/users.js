@@ -32,11 +32,12 @@ const users = [
 ]
 
 
-
+// Get all user details 
 router.get('/', (req , res) => {
     res.send(users);
 });
 
+// Add User 
 router.post('/', (req, res) => {
     console.log(req.body)
 
@@ -47,6 +48,21 @@ router.post('/', (req, res) => {
     res.send(`Welcome to the gang ${user.firstName} Hola`)
 });
 
+// Update User
+
+router.patch('/' , (req, res) => {
+const user = users.find((user) => user.firstName === req.params.firstName);
+
+user.age = req.body.age;
+});
+
+//Delete User
+
+// router.delete('/' , (req, res) => {
+
+// });
+
+// Search User 
 router.get('/:UserName' , (req , res) => {
     const { UserName } = req.params;
     
