@@ -4,33 +4,7 @@ const router = express.Router();
 
 
 // Mock Database 
-const users = [
-    {
-        firstName: "Frezzeee",
-        lsatName: "Jazz",
-        UserName: "Frezz",
-        age: 88,
-    },
-    {
-        firstName: "Frezzeee",
-        lsatName: "Jazz",
-        UserName: "Frezz",
-        age: 87,
-    },
-    {
-        firstName: "Elephant",
-        lsatName: "Jazz",
-        UserName: "Elee",
-        age: 88,
-    },
-    {
-        firstName: "Giraff",
-        lsatName: "Jazz",
-        UserName: "Gif",
-        age: 89,
-    }
-]
-
+let users = []
 
 // Get all user details 
 router.get('/', (req , res) => {
@@ -50,23 +24,29 @@ router.post('/', (req, res) => {
 
 // Update User
 
-router.patch('/' , (req, res) => {
-const user = users.find((user) => user.firstName === req.params.firstName);
+// router.patch('/' , (req, res) => {
 
-user.age = req.body.age;
-});
+//     const user = users.find((user) => user.iD === req.params.iD);
+
+// user.age = req.body.age;
+// });
 
 //Delete User
 
-// router.delete('/' , (req, res) => {
+router.delete('/:iD' , (req, res) => {
+    const { iD } = req.params;
 
-// });
+    users = users.filter((user) => user.iD !== iD);
+    
+    res.send(`User deleted ${iD}`);
+
+});
 
 // Search User 
-router.get('/:UserName' , (req , res) => {
-    const { UserName } = req.params;
+router.get('/:iD' , (req , res) => {
+    const { iD } = req.params;
     
-    const userFound = users.find((user) => user.UserName === UserName);
+    const userFound = users.find((user) => user.iD === iD);
 
     res.send(userFound)
 })
