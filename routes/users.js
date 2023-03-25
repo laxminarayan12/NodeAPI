@@ -24,12 +24,16 @@ router.post('/', (req, res) => {
 
 // Update User
 
-// router.patch('/' , (req, res) => {
+router.patch('/:iD' , (req, res) => {
 
-//     const user = users.find((user) => user.iD === req.params.iD);
+    const { iD } = req.params;
 
-// user.age = req.body.age;
-// });
+    const userToUpdate = users.find((user) => user.iD === req.params.iD);
+
+    user.age = req.body.age;
+
+    res.send(`User with id ${id} Updated`)
+});
 
 //Delete User
 
