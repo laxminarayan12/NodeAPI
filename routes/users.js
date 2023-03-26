@@ -3,7 +3,18 @@ import express from 'express';
 const router = express.Router();
 
 
-// Mock Database 
+/* Mock Database 
+While creating user in postman please ensure to make sure to use this
+
+{
+    "firstName": "HOst",
+    "lsatName": "Frezzeee",
+    "UserName": "User@123",
+    "age": 23,
+    "iD": "12t01"
+}
+
+*/
 let users = []
 
 // Get all user details 
